@@ -7,9 +7,9 @@ import { defineConfig } from 'astro/config'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://playground.shiftbrain.com/',
-  base: '/post/template',
+  base: '/post/hover-to-drop-text',
   server: {
-    open: '/post/template',
+    open: '/post/hover-to-drop-text',
   },
   prefetch: true,
   integrations: [
