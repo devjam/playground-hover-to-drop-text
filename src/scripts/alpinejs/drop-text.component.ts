@@ -167,7 +167,7 @@ Alpine.data('dropText', () => {
     },
     reset() {
       if (isResetAnimating || !splitInstance) return
-      splitInstance.chars.forEach((char) => {
+      splitInstance.chars.forEach((char: HTMLElement) => {
         if (char.dataset.dropped) {
           isResetAnimating = true
           gsap.to(char, {
