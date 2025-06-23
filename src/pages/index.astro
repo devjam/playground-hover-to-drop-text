@@ -1,17 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { title, slug } from '../meta.json'
+import Layout from '@/layouts/Layout.astro'
+import { title, slug } from '@/meta.json'
 ---
 
 <Layout {title} repoUrl={`https://github.com/devjam/playground-${slug}`}>
   <main>
     {/* contents start */}
-    <div class="relative flex min-h-svh flex-col items-center justify-center text-30">
-      <ul class="list-disc">
-        <li>Alpine example　→　_alpine-example.astro</li>
-        <li>React example　→　_react-example.astro</li>
-      </ul>
+    <div
+      x-data="dropText"
+      class="flex h-lvh w-screen items-center justify-center overflow-clip pb-[10vh]"
+      @pointermove="onPointermove"
+    >
+      <div class="relative w-max text-center">
+        <div
+          class="pointer-events-none mx-20 break-all text-[7vw] leading-[1.15] opacity-10"
+          x-ref="staticText"
+        >
+        </div>
+        <div
+          class="absolute inset-0 mx-20 break-all text-[7vw] leading-[1.15]"
+          x-ref="hoverText"
+          :style="{ 'color': guiParams.textColor }"
+        >
+        </div>
+      </div>
     </div>
+    <p class="absolute bottom-0 left-0 px-20 pb-15 text-black-primary/80">
+      Sound effects: <a href="https://snd.dev/" target="_blank" class="underline hover:no-underline"
+        >https://snd.dev/</a
+      >
+    </p>
     {/* contents end */}
   </main>
 </Layout>
+
+<style>
+  [x-ref='hoverText'] > div {
+    will-change: transform;
+  }
+</style>
